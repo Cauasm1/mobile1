@@ -7,19 +7,20 @@ import NomePersonalizado from './src/ExemploParametro';
 import Aprovado from './src/Exercicio';
 import ExemploStyleView from './src/ExemploStyleView';
 import ExemploStyleText from './src/ExemploStyleText';
-import Login from './src/Login';
+import TelaLogin from './src/TelaLogin';
 
 function App(): React.JSX.Element {
   return (
-    <>
-      <View style={{ backgroundColor: 'green', borderRadius: 15 }}>
-        <HelloWorld />
-        <Gato />
-        <NomePersonalizado nome='' sobrenome={''} />
-        <Aprovado nome='' nota1={0} nota2={0} />
-        <Login />
-      </View>
-    </>
+    <TelaLogin />
+    //<>
+    //<View style={{ backgroundColor: 'green', borderRadius: 15 }}>
+    //<HelloWorld />
+    //<Gato />
+    //<NomePersonalizado nome='' sobrenome={''} />
+    //<Aprovado nome='' nota1={0} nota2={0} />
+    //<Login />
+    //</View>
+    //</>
   );
 }
 
