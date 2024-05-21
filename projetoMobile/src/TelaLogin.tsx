@@ -9,7 +9,7 @@ const Login = () => {
 
     function logar() {
         if (verificaCampos()) {
-
+            
             auth()
                 .signInWithEmailAndPassword(email, senha)
                 .then(() => { Alert.alert('Logado com sucesso') })
