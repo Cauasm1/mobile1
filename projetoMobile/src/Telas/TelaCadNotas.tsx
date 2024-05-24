@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, } from "react-native";
+import { Alert, Text, TextInput, } from "react-native";
 
 import firestore from "@react-native-firebase/firestore";
 import Carregamento from "../Carregamento";
@@ -14,7 +14,7 @@ const TelaCadNota = ({ navigation, route }: CadNotaProps) => {
     function Cadastrar() {
         setIsCarregando(true);
 
-        if(verificaCampos()){
+        if (verificaCampos()) {
             let nota = {
                 titulo: titulo,
                 descricao: descricao,
@@ -22,15 +22,32 @@ const TelaCadNota = ({ navigation, route }: CadNotaProps) => {
             } as INotas;
 
             firestore()
-            .collection('notas')
-            .add(nota)
-            .then(() => {
-                Alert.alert("Nota", "Cadastrada com sucesso")
-                navigation.navigate('TelaPrincipal')
-            })
-            .catch((error) => console.log(error))
-            .finally(() => setIsCarregando(false));
+                .collection('notas')
+                .add(nota)
+                .then(() => {
+                    Alert.alert("Nota", "Cadastrada com sucesso")
+                    navigation.navigate('TelaPrincipal')
+                })
+                .catch((error) => console.log(error))
+                .finally(() => setIsCarregando(false));
         }
         setIsCarregando(false);
+    }
+    function verificaCampos() {
+        if (titulo == "") {
+            Alert.alert("Titulo em branco", "Digite uma descrição da nota")
+            return false;
+        }
+        return (
+            <View>
+                <Carregamento isCarregando=(isCarregando) />
+
+                <Text>Titulo</Text>
+                <TextInput
+                    style={styles.caixa_texto}
+                    onChangeText={(text) => { setTitulo(text) }} />
+                <Text>Descrição</Text>
+            </View>
+        )
     }
 }
