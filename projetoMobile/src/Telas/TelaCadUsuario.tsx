@@ -3,12 +3,14 @@ import { Alert, Image, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Tex
 import React, { useState } from 'react';
 import auth from "@react-native-firebase/auth";
 import { CadUsuarioProps } from '../navigation/HomeNavigator';
+import Carregamento from '../Carregamento';
 
 const Cadastro = ({ navigation }: CadUsuarioProps) => {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmaSenha, setConfirmaSenha] = useState('');
+    const [isCarregando, setIsCarregando] = useState(false);
 
     function log() {
         console.log('Email: ' + email + '\nSenha: ' + senha + '\nConfirmação de Senha: ' + confirmaSenha)
@@ -27,12 +29,13 @@ const Cadastro = ({ navigation }: CadUsuarioProps) => {
             Alert.alert('Confirmação de senha em branco', 'Digite uma senha')
             return false;
         }
-        return true;
         if (senha != confirmaSenha) {
             Alert.alert("As senhas não são iguais",
                 "Digite a configuração de senha corretamente")
             return false;
         }
+        return true;
+
 
     }
 
@@ -63,7 +66,7 @@ const Cadastro = ({ navigation }: CadUsuarioProps) => {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.inner}>
-                <Carregamento isCarregando={isCarregando}/>
+                <Carregamento isCarregando={isCarregando} />
                 <View>
                     <Text style={styles.title}>Cadastre-se</Text>
                     <Text style={styles.label}>
@@ -84,7 +87,7 @@ const Cadastro = ({ navigation }: CadUsuarioProps) => {
                         <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaLogin") }}>
                             <Text style={styles.buttonText}>Retornar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaPrincipal") }}disabled={isCarregando}>
+                        <TouchableOpacity style={styles.button} onPress={() => { Cadastrar }} disabled={isCarregando}>
                             <Text style={styles.buttonText}>Cadastrar</Text>
                         </TouchableOpacity>
                     </View>
@@ -145,6 +148,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'white',
-        fontSize: 18,
+        fontSize: 18
     }
 });
