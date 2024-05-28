@@ -87,7 +87,7 @@ const Cadastro = ({ navigation }: CadUsuarioProps) => {
                         <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaLogin") }}>
                             <Text style={styles.buttonText}>Retornar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => { Cadastrar }} disabled={isCarregando}>
+                        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaPrincipal") }}>
                             <Text style={styles.buttonText}>Cadastrar</Text>
                         </TouchableOpacity>
                     </View>
@@ -105,9 +105,8 @@ const styles = StyleSheet.create({
     },
     inner: {
         flex: 1,
-        justifyContent: 'center',
         flexDirection: 'column',
-        backgroundColor: 'purple'
+        backgroundColor: '#4DF674'
     },
     title: {
         textAlign: 'center',
@@ -128,13 +127,15 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
     },
     input: {
+        width: '85%',
+        color: 'black',
         borderWidth: 3,
+        borderRadius: 5,
+        margin: 3,
+        backgroundColor: 'white',
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginVertical: 10,
-        borderRadius: 5,
-        color: 'black',
-        backgroundColor: '#fff',
     },
     button: {
         elevation: 5,
