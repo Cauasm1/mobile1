@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable, Image, Alert } from 'react-native';
 import { PrincipalProps } from '../navigation/HomeNavigator';
+import ListaFlat from '../ListaFlat';
 
 const TelaPrincipal = ({ navigation, route }: PrincipalProps) => {
     return (

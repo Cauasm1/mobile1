@@ -9,16 +9,11 @@ import Carregamento from "../Carregamento";
 type ItemNotaProps = {
     numero: number,
     nota: INotas;
+    onAlterar: (id: string) => void;
+    onDeletar: (id: string) => void;
 }
 
 const ItemNota = (props: ItemNotaProps) => {
-    function deletarNota(id: string) {
-        //
-    }
-
-    function alterarNota(id: string) {
-        //
-    }
 
     return (
         <View style={styles.card}>
@@ -31,7 +26,7 @@ const ItemNota = (props: ItemNotaProps) => {
 
             <View style={styles.botao_alterar}>
                 <Pressable
-                    onPress={() => alterarNota(props.nota.id!)}>
+                    onPress={() => props.onAlterar(props.nota.id!)}>
                     <Text style={styles.texto_botao_card}>
                         A
                     </Text>
@@ -40,7 +35,7 @@ const ItemNota = (props: ItemNotaProps) => {
 
             <View style={styles.botao_deletar}>
                 <Pressable
-                    onPress={() => deletarNota(props.nota.id!)}>
+                    onPress={() => props.onDeletar(props.nota.id!)}>
                     <Text style={styles.texto_botao_card}>
                         X
                     </Text>
@@ -76,6 +71,14 @@ const TelaConNotas = ({ navigation, route }: ConNotasProps) => {
         return () => subscribe();
     }, []);
 
+    function alterarNota(id: string) {
+        navigation.navigate("TelaAltNota", { id: id })
+    }
+
+    function deletarNota(id: string) {
+
+    }
+
     return (
         <View style={styles.container}>
             <Carregamento isCarregando={isCarregando} />
@@ -84,7 +87,7 @@ const TelaConNotas = ({ navigation, route }: ConNotasProps) => {
             <FlatList
                 data={notas}
                 renderItem={(info) =>
-                    <ItemNota numero={info.index} nota={info.item} />}>
+                    <ItemNota numero={info.index} nota={info.item} onAlterar={alterarNota} onDeletar={deletarNota} />}>
 
             </FlatList>
         </View>
@@ -95,19 +98,33 @@ export default TelaConNotas;
 
 const styles = StyleSheet.create({
     card: {
-
+        borderWidth: 2,
+        borderColor: 'grey',
+        margin: 5,
+        borderRadius: 10,
+        padding: 3,
+        flexDirection: 'row',
+        backgroundColor: 'white'
     },
     dados_card: {
-
-    },
-    botao_alterar: {
-
-    },
-    texto_botao_card: {
-
+        flex: 1
     },
     botao_deletar: {
-
+        backgroundColor: 'red',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    botao_alterar: {
+        backgroundColor: 'yellow',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    texto_botao_card: {
+        fontWeight: 'bold',
+        fontSize: 40,
+        color: 'black'
     },
     container: {
 
