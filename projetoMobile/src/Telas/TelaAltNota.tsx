@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
-import firestore from "@react-native-firebase/firestore";
+import Firestore from "@react-native-firebase/firestore";
 import { AltNotaProps } from "../navigation/HomeNavigator";
 import { create } from "react-test-renderer";
 import Carregamento from "../Carregamento";
@@ -15,7 +15,7 @@ const TelaAltNota = ({ navigation, route }: AltNotaProps) => {
 
     async function caregar() {
         setIsCarregando(true);
-        const resultado = await firestore()
+        const resultado = await Firestore()
             .collection('notas')
             .doc(id)
             .get();
@@ -37,13 +37,13 @@ const TelaAltNota = ({ navigation, route }: AltNotaProps) => {
     function alterar() {
         setIsCarregando(true);
 
-        firestore alterar()
+        Firestore()
             .collection('notas')
             .doc(id)
             .update({
                 titulo,
                 descricao,
-                created_at: firestore.FieldValue.serverTimestamp()
+                created_at: Firestore.FieldValue.serverTimestamp()
             })
             .then(() => {
                 Alert.alert("Nota", "Alterada com sucesso")

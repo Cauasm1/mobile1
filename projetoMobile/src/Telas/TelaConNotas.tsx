@@ -76,7 +76,17 @@ const TelaConNotas = ({ navigation, route }: ConNotasProps) => {
     }
 
     function deletarNota(id: string) {
+        setIsCarregando(true);
 
+        firestore()
+            .collection('notas')
+            .doc(id)
+            .delete()
+            .then(() => {
+                Alert.alert("Nota", "Removido com sucesso")
+            })
+            .catch((error) => console.log(error))
+            .finally(() => setIsCarregando(false));
     }
 
     return (
