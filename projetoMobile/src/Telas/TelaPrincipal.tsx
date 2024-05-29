@@ -20,6 +20,12 @@ const TelaPrincipal = ({ navigation, route }: PrincipalProps) => {
                 <Text style={styles.desc_botao}>Consultar Notas</Text>
             </Pressable>
 
+            <Pressable
+                style={(state) => [styles.botao, state.pressed ? { opacity: 0.5 } : null]}
+                onPress={() => { navigation.navigate('TelaMedia') }}>
+                <Text style={styles.desc_botao}>Media</Text>
+            </Pressable>
+
             <ListaFlat />
         </View>
     )
