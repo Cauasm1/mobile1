@@ -3,7 +3,6 @@ import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 
 
 import Firestore from "@react-native-firebase/firestore";
 import { AltClienteProps } from "../navigation/HomeNavigator";
-import { create } from "react-test-renderer";
 import Carregamento from "../Carregamento";
 import { INotas } from "../model/INotas";
 
@@ -23,24 +22,24 @@ const TelaAltCliente = ({ navigation, route }: AltClienteProps) => {
     async function caregar() {
         setIsCarregando(true);
         const resultado = await Firestore()
-            .collection('notas')
+            .collection('cliente')
             .doc(id)
             .get();
 
-        const nota = {
+        const cliente = {
             id: resultado.id,
             ...resultado.data()
         } as INotas;
 
-        setNome(nota.nome);
-        setCpf(nota.cpf);
-        setRua(nota.rua);
-        setNumero(nota.numero);
-        setBairro(nota.bairro);
-        setComplemento(nota.complemento);
-        setCidade(nota.cidade);
-        setEstado(nota.estado);
-        setDataNasc(nota.datanasc);
+        setNome(cliente.nome);
+        setCpf(cliente.cpf);
+        setRua(cliente.rua);
+        setNumero(cliente.numero);
+        setBairro(cliente.bairro);
+        setComplemento(cliente.complemento);
+        setCidade(cliente.cidade);
+        setEstado(cliente.estado);
+        setDataNasc(cliente.datanasc);
         setIsCarregando(false);
     };
 
@@ -52,7 +51,7 @@ const TelaAltCliente = ({ navigation, route }: AltClienteProps) => {
         setIsCarregando(true);
 
         Firestore()
-            .collection('notas')
+            .collection('cliente')
             .doc(id)
             .update({
                 nome: nome,
