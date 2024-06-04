@@ -87,7 +87,7 @@ const Cadastro = ({ navigation }: CadUsuarioProps) => {
                         <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaLogin") }}>
                             <Text style={styles.buttonText}>Retornar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("TelaPrincipal") }}>
+                        <TouchableOpacity style={styles.button} onPress={() => { [navigation.goBack(), Cadastrar()] }}>
                             <Text style={styles.buttonText}>Cadastrar</Text>
                         </TouchableOpacity>
                     </View>

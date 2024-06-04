@@ -36,10 +36,10 @@ const TelaCadCliente = ({ navigation, route }: CadClienteProps) => {
             } as INotas;
 
             firestore()
-                .collection('notas')
+                .collection('cliente')
                 .add(nota)
                 .then(() => {
-                    Alert.alert("Nota", "Cadastrada com sucesso")
+                    Alert.alert("Cliente", "Cadastrada com sucesso")
                     navigation.navigate('TelaPrincipal')
                 })
                 .catch((error) => console.log(error))

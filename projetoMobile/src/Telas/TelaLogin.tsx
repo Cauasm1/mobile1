@@ -13,7 +13,7 @@ const Login = ({ navigation, route }: LoginProps) => {
 
             auth()
                 .signInWithEmailAndPassword(email, senha)
-                .then(() => { Alert.alert('Logado com sucesso') })
+                .then(() => { Alert.alert('Logado com sucesso'), navigation.navigate('TelaPrincipal') })
                 .catch((error) => tratarErros(String(error)))
         }
     }
@@ -80,7 +80,7 @@ const Login = ({ navigation, route }: LoginProps) => {
                 </Text>
                 <TextInput
                     style={styles.caixa_texto}
-                    onChangeText={(text) => { setSenha(text) }} />
+                    onChangeText={(text) => { setSenha(text) }} secureTextEntry={true} />
 
                 <Pressable
                     style={(state) => [styles.botao, state.pressed ? { opacity: 0.5 } : null]}

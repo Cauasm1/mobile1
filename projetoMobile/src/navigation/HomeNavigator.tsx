@@ -6,6 +6,7 @@ import TerceiraTela from "../Projeto/TerceiraTela";
 import TelaCadCliente from "../Telas/TelaCadCliente";
 import TelaConCliente from "../Telas/TelaConCliente";
 import TelaAltCliente from "../Telas/TelaAltCliente";
+import TelaCadAtendimento from "../Telas/TelaCadAtendimento";
 
 import TelaLogin from "../Telas/TelaLogin";
 import TelaCadUsuario from "../Telas/TelaCadUsuario";
@@ -23,6 +24,7 @@ type RootStackParamList = {
     TelaCadCliente: undefined;
     TelaConCliente: undefined;
     TelaAltCliente: { id: string };
+    TelaCadAtendimento: undefined;
 
     TelaLogin: undefined;
     TelaCadUsuario: undefined;
@@ -45,6 +47,7 @@ const HomeNavigator = () => {
             <Stack.Screen name="TelaCadCliente" component={TelaCadCliente} />
             <Stack.Screen name="TelaConCliente" component={TelaConCliente} />
             <Stack.Screen name="TelaAltCliente" component={TelaAltCliente} />
+            <Stack.Screen name="TelaCadAtendimento" component={TelaCadAtendimento} />
 
             <Stack.Screen name="TelaLogin" component={TelaLogin} />
             <Stack.Screen name="TelaCadUsuario" component={TelaCadUsuario} />
@@ -75,6 +78,7 @@ type AltNotaProps = NativeStackScreenProps<RootStackParamList, 'TelaAltNota'>;
 type CadClienteProps = NativeStackScreenProps<RootStackParamList, 'TelaCadCliente'>;
 type ConClienteProps = NativeStackScreenProps<RootStackParamList, 'TelaConCliente'>;
 type AltClienteProps = NativeStackScreenProps<RootStackParamList, 'TelaAltCliente'>;
+type CadAtendimentoProps = NativeStackScreenProps<RootStackParamList, 'TelaCadAtendimento'>;
 
 
 type PrimeiraProps = NativeStackScreenProps<RootStackParamList, 'PrimeiraTela'>;
@@ -82,4 +86,4 @@ type SegundaProps = NativeStackScreenProps<RootStackParamList, 'SegundaTela'>;
 type TerceiraProps = NativeStackScreenProps<RootStackParamList, 'TerceiraTela'>;
 
 export default HomeNavigator;
-export type { LoginProps, CadUsuarioProps, PrincipalProps, CadNotasProps, ConNotasProps, MediaProps, AltNotaProps, PrimeiraProps, SegundaProps, TerceiraProps, CadClienteProps, ConClienteProps, AltClienteProps };
+export type { LoginProps, CadUsuarioProps, PrincipalProps, CadNotasProps, ConNotasProps, MediaProps, AltNotaProps, PrimeiraProps, SegundaProps, TerceiraProps, CadClienteProps, ConClienteProps, AltClienteProps, CadAtendimentoProps };
