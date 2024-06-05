@@ -12,7 +12,7 @@ import DatePicker from "react-native-date-picker";
 
 
 const TelaCadAtendimento = ({ navigation, route }: CadAtendimentoProps) => {
-    const [cliente, setCliente] = useState([] as INotas[]);
+    const [atendimento, setAtendimento] = useState([] as IAtendimento[]);
     const [isCarregando, setIsCarregando] = useState(false);
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
@@ -72,9 +72,9 @@ const TelaCadAtendimento = ({ navigation, route }: CadAtendimentoProps) => {
                         ...doc.data()
                     }
 
-                }) as INotas[];
+                }) as IAtendimento[];
 
-                setCliente(data);
+                setAtendimento(data);
                 setIsCarregando(false);
             });
 
@@ -96,7 +96,7 @@ const TelaCadAtendimento = ({ navigation, route }: CadAtendimentoProps) => {
                     placeholderStyle={styles.placeholder}
                     selectedTextStyle={styles.selected}
                     inputSearchStyle={styles.input}
-                    data={cliente}
+                    data={atendimento}
                     search
                     maxHeight={300}
                     labelField="nome"
