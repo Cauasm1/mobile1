@@ -27,6 +27,12 @@ const TelaPrincipal = ({ navigation, route }: PrincipalProps) => {
                 <Text style={styles.desc_botao}>Cadastro de Atendimento</Text>
             </Pressable>
 
+            <Pressable
+                style={(state) => [styles.botao, state.pressed ? { opacity: 0.5 } : null]}
+                onPress={() => { navigation.navigate('TelaConAtendimento') }}>
+                <Text style={styles.desc_botao}>Consultar Atendimento</Text>
+            </Pressable>
+
             {/* <Pressable
                 style={(state) => [styles.botao, state.pressed ? { opacity: 0.5 } : null]}
                 onPress={() => { navigation.navigate('TelaMedia') }}>
